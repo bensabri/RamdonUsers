@@ -1,37 +1,57 @@
 import React from "react";
-import Days from "./components/Days";
-import Search from "./components/Search";
-import FetchWeather from "./components/FetchWeather";
-import Weather from "./components/Weather";
-import { useGlobalContext } from "./components/context";
 import "./App.css";
+import { useGlobalContext } from "./Context";
+import FetchAxios from "./FetchAxios";
+import Nav from "./components/Nav/Nav";
+import Card from "./components/Card/Card";
+import Loading from "./components/Loading/Loading";
 
-function App() {
+const App = () => {
 	const {
 		data,
-		backgroundClass,
-		setBackgroundClass,
-		isFetched,
+		filtredPeople,
+		countryStatus,
+		theme,
+		loading,
+		isfetched,
 	} = useGlobalContext();
 
-	if (isFetched && data.weather[0].main === "Clear") {
-		setBackgroundClass("app sunny");
-	} else if (isFetched && data.weather[0].main === "Clouds") {
-		setBackgroundClass("app cloudy");
-	} else if (isFetched && data.weather[0].main === "Rain") {
-		setBackgroundClass("app rain");
-	}
-
 	return (
-		<div className={backgroundClass}>
-			<main>
-				<Search />
-				<Days />
-				<Weather />
-				<FetchWeather />
-			</main>
+		<div className={`App ${theme ? "dark" : "light"}`}>
+			{isfetched && <Nav data={data} />}
+			{loading ? (
+				<Loading />
+			) : (
+				<section
+					className="h-full dark:bg-gray-700 dark:text-white"
+					id="card-container"
+				>
+					{filtredPeople
+						.filter((el) => el.country === countryStatus)
+						.map((formatedUser, index) => {
+							return (
+								<Card
+									name={formatedUser.name}
+									email={formatedUser.email}
+									photo={formatedUser.photo}
+									gender={formatedUser.gender}
+									age={formatedUser.age}
+									dayofbirth={formatedUser.dayofbirth}
+									city={formatedUser.city}
+									latitude={formatedUser.latitude}
+									country={formatedUser.country}
+									id={index}
+									key={formatedUser.id}
+									telephone={formatedUser.telephone}
+									nationnality={formatedUser.nationnality}
+								/>
+							);
+						})}
+				</section>
+			)}
+			<FetchAxios />
 		</div>
 	);
-}
+};
 
 export default App;

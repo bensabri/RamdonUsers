@@ -1,0 +1,16 @@
+.natSelect {
+	padding: 1.5rem;
+	display: flex;
+	flex-direction: column;
+
+	max-width: 15rem;
+}
+.natSelect label {
+	margin-bottom: 0.5rem;
+}
+.natSelect select {
+	padding: 0.3rem;
+}
+select {
+	border-radius: 5px;
+}

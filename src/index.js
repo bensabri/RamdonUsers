@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { AppProvider } from "./components/context";
+import { AppProvider } from "./Context";
 import App from "./App";
 import "./index.css";
 import reportWebVitals from "./reportWebVitals";
@@ -9,6 +9,7 @@ ReactDOM.render(
 	<AppProvider>
 		<App />
 	</AppProvider>,
+
 	document.getElementById("root")
 );
 

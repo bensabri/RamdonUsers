@@ -1,10 +1,15 @@
 module.exports = {
-	purge: ["./src/**/*.{js,jsx,ts,tsx}", "./public/index.html"],
-	darkMode: false, // or 'media' or 'class'
+	purge: [],
+	darkMode: "class", // or 'media' or 'class'
 	theme: {
 		extend: {
 			minWidth: {
-				sabri: "150px",
+				sabri: "100px",
+			},
+			spacing: {
+				72: "18rem",
+				84: "21rem",
+				96: "24rem",
 			},
 		},
 	},
