@@ -1,0 +1,28 @@
+input {
+	color: white !important;
+}
+
+section {
+	display: flex;
+	justify-content: space-around;
+	align-content: flex-start;
+	flex-wrap: wrap;
+	background-color: honeydew;
+	padding: 50px;
+	min-height: 700px;
+	transition: background-color 450ms ease-in-out;
+}
+.loading-container {
+	display: flex;
+	justify-content: center;
+}
+section {
+	height: 95vh;
+}
+li {
+	list-style-type: none;
+}
+#card-container {
+	display: flex !important;
+	align-items: flex-start;
+}
